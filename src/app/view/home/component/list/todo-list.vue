@@ -187,13 +187,14 @@ export default defineComponent({
          */
         const reloadSign = (todoItem: TodoItem) => {
             if (!todoItem.state) return;
-            const todays = momentFormat(new Date(), 'YYYY-MM-DD').split('-')
+            
             const stateDateList: any[] = todoItem.stateDateList || []
             const signDay = stateDateList[stateDateList.length - 1]
             switch (todoItem.call) {
                 case '日':
-                    const cycleDays = signDay.split('-')
-                    if (cycleDays[0] === todays[0] && cycleDays[1] === todays[1] && todays[2] > cycleDays[2]) {
+                    const cycleDays = moment(signDay).hour(23).minute(59).second(59).valueOf()
+                    const todays = moment().valueOf()
+                    if (todays > cycleDays) {
                         todoItem.state = false
                     }
                     break;
