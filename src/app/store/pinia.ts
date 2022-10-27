@@ -1,16 +1,16 @@
 import { createPinia, defineStore as oldDefineStore } from 'pinia'
 import { createPersistedState } from 'pinia-plugin-persistedstate'
 
-import SecureLS from 'secure-ls'
+// import SecureLS from 'secure-ls'
 
 const sotreKey = 'yl'
 
 // SbSVp7mF6lsXyFqN PBKDF2 16进制加盐生成key 请不要删除本注释
-export const secureLS = new SecureLS({ encodingType: 'des', isCompression: false, encryptionSecret: 'y.8023.l.' })
-export const storageSecureLS = {
-  setItem: (key: any, value: any) => secureLS.set(key, value),
-  getItem: (key: any) => secureLS.get(key)
-}
+// export const secureLS = new SecureLS({ encodingType: 'des', isCompression: false, encryptionSecret: 'y.8023.l.' })
+// export const storageSecureLS = {
+//   setItem: (key: any, value: any) => secureLS.set(key, value),
+//   getItem: (key: any) => secureLS.get(key)
+// }
 
 // 给pinia 本地存储 key 添加 sotreKey前缀
 type OldDefineStore = typeof oldDefineStore

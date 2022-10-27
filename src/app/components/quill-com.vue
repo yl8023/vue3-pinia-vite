@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, PropType, Ref, ref, toRefs, watchEffect } from "vue";
-import Quill, { Delta } from "quill";
+import Quill from "quill";
 import 'quill/dist/quill.snow.css';
 import { QuillItem } from "@/common/constants";
 export default defineComponent({

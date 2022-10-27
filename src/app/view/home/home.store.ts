@@ -1,7 +1,6 @@
 import { db } from "@/app/store/db"
-import { defineStore, storageSecureLS } from "@/app/store/pinia"
+import { defineStore } from "@/app/store/pinia"
 import { NoteItem, TodoItem, MemoType, MemoTypeId } from "@/common/constants"
-
 export const homeStore = defineStore('homeStore', {
   state: () => ({
     maps: {
@@ -28,7 +27,7 @@ export const homeStore = defineStore('homeStore', {
      * @param item 
      */
     addItem(type: MemoType, item: any) {
-      item[type + 'Id'] = crypto.randomUUID() //添加唯一uuid
+      item[type + 'Id'] = new Date().getTime() //添加唯一uuid
       item.updateTime = new Date().getTime()
       db[type].put({ ...item }).then((id) => {
         this.setMap(type)
